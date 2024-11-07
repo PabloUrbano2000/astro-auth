@@ -1,5 +1,5 @@
 ---
-// import { firebase } from "@/firebase/config";
+import { firebase } from "@/firebase/config";
 import MainLayout from "@/layouts/MainLayout.astro";
 
 const { user
@@ -10,15 +10,16 @@ const { user
 // 	return Astro.redirect('/login')
 // }
 
-const {email, emailVerified, avatar, name} = user!
+const {email, avatar, name} = user!
 
-// const firebaseUser = firebase.auth.currentUser;
+const firebaseUser = firebase.auth.currentUser;
 
 // console.log(firebaseUser)
 // if(firebaseUser === null){
 // 	return Astro.redirect('/login')
 // }
-// await firebaseUser?.reload()
+await firebaseUser?.reload()
+const { emailVerified } = firebaseUser!
 // const {displayName, email, emailVerified, photoURL } = firebaseUser
 // const name = displayName ?? 'No display name'
 
